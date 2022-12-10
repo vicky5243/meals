@@ -12,7 +12,7 @@ class CategoryItem extends StatelessWidget {
 
   void selectCategory(BuildContext context) {
     // Navigate to category meals screen
-    Navigator.of(context).pushNamed('/category-meals', arguments: {
+    Navigator.of(context).pushNamed(CategoryMealsScreen.routeName, arguments: {
       'id': id,
       'title': title,
     });

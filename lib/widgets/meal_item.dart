@@ -10,6 +10,7 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final Function removeItem;
 
   const MealItem({
     super.key,
@@ -19,6 +20,7 @@ class MealItem extends StatelessWidget {
     required this.duration,
     required this.complexity,
     required this.affordability,
+    required this.removeItem,
   });
 
   String get complexityText {
@@ -45,7 +47,14 @@ class MealItem extends StatelessWidget {
 
   void selectMeal(BuildContext context) {
     // Navigate to category meals screen
-    Navigator.of(context).pushNamed(MealDetailScreen.routeName, arguments: id);
+    Navigator.of(context)
+        .pushNamed(MealDetailScreen.routeName, arguments: id)
+        .then((id) {
+      // call when floating button clicked in meal_detail_screen.dart
+      if (id != null) {
+        removeItem(id);
+      }
+    });
   }
 
   @override
